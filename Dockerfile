@@ -45,12 +45,14 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g $SERVICE_GID $SERVICE_USER \
-    && useradd -u $SERVICE_UID -g $SERVICE_GID -d /usr/src/app -s /usr/sbin/nologin $SERVICE_USER \
-    || echo "Error creating service account: $?"
-
 # Create app directory
-WORKDIR /usr/src/app
+ENV HOME=/usr/src/app
+WORKDIR $HOME
+
+# Create service user
+RUN groupadd -g $SERVICE_GID $SERVICE_USER \
+    && useradd -u $SERVICE_UID -g $SERVICE_GID -d $HOME -s /usr/sbin/nologin $SERVICE_USER \
+    || echo "Error creating service account: $?"
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
