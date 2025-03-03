@@ -1,4 +1,4 @@
-FROM node:16.19.0-slim
+FROM node:18-slim
 
 ARG SERVICE_USER=service
 ARG SERVICE_UID=1001
