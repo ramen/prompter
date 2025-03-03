@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="dark">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+
+  <body style="overflow-y: scroll">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-body-tertiary shadow">
+      <div class="container-fluid">
+        <span class="navbar-brand">
+          <%= title %>
+        </span>
+      </div>
+    </nav>
+
+    <main class="container-fluid" style="margin-top: 85px">
+      <div id="alerts"></div>
+
+      <h4><%= title %></h4>
+    </main>
+
+    <script>
+      const app = new App();
+      app.init();
+    </script>
   </body>
 </html>
