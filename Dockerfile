@@ -46,7 +46,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g $SERVICE_GID $SERVICE_USER \
-    && useradd -u $SERVICE_UID -g $SERVICE_GID -d /app -s /usr/sbin/nologin $SERVICE_USER \
+    && useradd -u $SERVICE_UID -g $SERVICE_GID -d /usr/src/app -s /usr/sbin/nologin $SERVICE_USER \
     || echo "Error creating service account: $?"
 
 # Create app directory
