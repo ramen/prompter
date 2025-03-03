@@ -58,14 +58,14 @@ WORKDIR /usr/src/app
 COPY --chown=$SERVICE_UID:$SERVICE_GID package*.json ./
 RUN chown $SERVICE_UID:$SERVICE_GID ./
 
-USER $SERVICE_UID:$SERVICE_GID
-
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
 # Bundle app source
 COPY --chown=$SERVICE_UID:$SERVICE_GID . .
+
+USER $SERVICE_UID:$SERVICE_GID
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
