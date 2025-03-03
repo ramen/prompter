@@ -13,25 +13,25 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-body-tertiary shadow">
       <div class="container-fluid">
-        <span class="navbar-brand">
+        <span class="navbar-brand position-absolute">
           <%= title %>
         </span>
+
+        <div class="d-flex justify-content-center flex-grow-1">
+          <button id="preview-btn" class="btn btn-primary me-2">Preview</button>
+          <a id="download" href="#" class="btn btn-primary" target="_blank">Download</a>
+        </div>
       </div>
     </nav>
 
-    <main class="container-fluid" style="margin-top: 85px">
+    <main class="container-fluid" style="margin-top: 66px">
       <div id="alerts"></div>
 
       <div class="row">
         <div class="col-md-6">
-          <div class="mb-3 text-end">
-            <button id="preview-btn" class="btn btn-primary">Preview</button>
-            <a id="download" href="#" class="btn btn-primary" target="_blank">Download</a>
-          </div>
-
           <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea id="content" class="form-control" rows="10">SONG TITLE
+            <textarea id="content" class="form-control" rows="19">### SONG TITLE
 
 LYRICS</textarea>
             <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Guide</a>
