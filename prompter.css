@@ -1,13 +1,9 @@
-@page {
-  background-color: black;
-}
+@page { background: black; }
 body {
   color: #fff200;
-  font-family: "Arial";
+  font-family: Arial;
   font-size: 28px;
   font-weight: bold;
   margin: 0 0.75in;
 }
-h3 {
-  color: white;
-}
+h3 { color: white; }
