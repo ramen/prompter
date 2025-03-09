@@ -14,10 +14,20 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// Helper function to build a slug from the first line of content
+function buildSlug(line) {
+  return line
+    .replace(/^[#\s]+/, '')
+    .replace(/\s+$/, '')
+    .replace(/[^A-Za-z0-9]/g, '-')
+    .toLowerCase();
+}
+
 // Helper function to generate PDF
 async function generatePdf(req) {
   const userGuid = (req.query.userGuid || '').replace(/[^A-Za-z0-9]/g, '');
   const lines = req.query.content.split('\n');
+  const slug = buildSlug(lines[0]) || 'lyrics';
   const content = lines.map(line => line + '  ').join('\n');
   const css = req.query.css;
 
@@ -40,7 +50,7 @@ async function generatePdf(req) {
         printBackground: true
       }
     });
-    return { filepath, userGuid };
+    return { filepath, slug, userGuid };
   } catch (error) {
     console.error(error);
     throw error;
@@ -59,9 +69,9 @@ router.get('/preview.pdf', async function(req, res) {
 
 router.get('/download.pdf', async function(req, res) {
   try {
-    const { filepath, userGuid } = await generatePdf(req);
+    const { filepath, slug, userGuid } = await generatePdf(req);
     res.contentType("application/octet-stream");
-    res.setHeader('Content-Disposition', `attachment; filename="Prompter-${userGuid}.pdf"`);
+    res.setHeader('Content-Disposition', `attachment; filename="${slug}-${userGuid}.pdf"`);
     res.sendFile(path.resolve(filepath));
   } catch (error) {
     res.status(500).send('Error generating PDF');
