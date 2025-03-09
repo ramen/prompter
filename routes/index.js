@@ -5,6 +5,10 @@ const path = require('path');
 var express = require('express');
 var router = express.Router();
 
+// This will be used for the top, bottom, left, and right margins
+// in addition to any margins added by the CSS.
+const MARGIN_SIZE = '0.25in';
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const css = fs.readFileSync('./prompter.css', 'utf8');
@@ -45,9 +49,13 @@ async function generatePdf(req) {
       css: css,
       dest: filepath,
       pdf_options: {
-        format: "Legal",
-        margin: {},
-        printBackground: true
+      format: "Legal",
+      margin: {
+        top: MARGIN_SIZE,
+        bottom: MARGIN_SIZE,
+        left: MARGIN_SIZE,
+        right: MARGIN_SIZE,
+      }
       }
     });
     return { filepath, slug, userGuid };
