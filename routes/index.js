@@ -5,10 +5,6 @@ const path = require('path');
 var express = require('express');
 var router = express.Router();
 
-// This will be used for the top, bottom, left, and right margins
-// in addition to any margins added by the CSS.
-const MARGIN_SIZE = '0.25in';
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const css = fs.readFileSync('./prompter.css', 'utf8');
