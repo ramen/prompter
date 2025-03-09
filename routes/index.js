@@ -49,13 +49,7 @@ async function generatePdf(req) {
       css: css,
       dest: filepath,
       pdf_options: {
-      format: "Legal",
-      margin: {
-        top: MARGIN_SIZE,
-        bottom: MARGIN_SIZE,
-        left: MARGIN_SIZE,
-        right: MARGIN_SIZE,
-      }
+        format: "Legal"
       }
     });
     return { filepath, slug, userGuid };

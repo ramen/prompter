@@ -1,9 +1,11 @@
-@page { background: black; }
+@page {
+  background: black;
+  margin: 0.25in 1in;
+}
 body {
   color: #fff200;
   font-family: Arial;
   font-size: 28px;
   font-weight: bold;
-  margin: 0 0.75in;
 }
 h3 { color: white; }
